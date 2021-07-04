@@ -1,1 +1,0 @@
-C:\Users\Administrator\IdeaProjects\osukt\build\classes\kotlin\main\osukt\Client.class;C:\Users\Administrator\IdeaProjects\osukt\build\classes\kotlin\main\osukt\Main.class
