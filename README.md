@@ -1,5 +1,7 @@
 # osu-kt
 
+## WIP!
+
 This is an osu! API wrapper written in Kotlin. The main goal is to create a usable API wrapper for our Discord bot project [NaersinBot-JDA](https://github.com/krsmll/NaersinBot-JDA).
 
 ## Usage
