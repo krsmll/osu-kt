@@ -2,6 +2,7 @@ package osukt
 
 import osukt.domain.Scores
 import osukt.domain.User
+import osukt.domain.converters.UserConverter
 import osukt.helpers.ModUtils
 import java.io.FileInputStream
 import java.util.*
@@ -22,10 +23,11 @@ object Main {
 
         val user = User.get("Slay", isUsername = true)
         val scores = Scores.get("Slay", "2803688", isUsername = true)
+
         println(user)
         println(scores)
 
-        println(ModUtils.modsToString(9))
-        println(ModUtils.parseMods("HDNF"))
+        println(ModUtils.toModList(9))
+        println(ModUtils.parseModString("HDNF"))
     }
 }

@@ -1,49 +1,36 @@
 package osukt.domain
 
-import com.beust.klaxon.Json
 import com.beust.klaxon.Klaxon
 import osukt.Client
-import osukt.Endpoints
+import osukt.domain.converters.ScoreConverter
+import osukt.enums.Endpoint
 import osukt.enums.GameMode
+import osukt.enums.Mod
 import osukt.helpers.ModUtils
+import java.time.LocalDateTime
 
 data class Scores(
-    @Json(name = "score_id")
-    val scoreId: String,
-    @Json(name = "score")
-    val score: String,
-    @Json(name = "username")
+    val scoreId: Long,
+    val userId: Long,
     val username: String,
-    @Json(name = "count300")
-    val count300: String,
-    @Json(name = "count100")
-    val count100: String,
-    @Json(name = "count50")
-    val count50: String,
-    @Json(name = "countmiss")
-    val countMiss: String,
-    @Json(name = "maxcombo")
-    val maxCombo: String,
-    @Json(name = "countkatu")
-    val countKatu: String,
-    @Json(name = "countgeki")
-    val countGeki: String,
-    @Json(name = "perfect")
-    val isPerfect: String,
-    @Json(name = "enabled_mods")
-    val enabledMods: String,
-    @Json(name = "user_id")
-    val userId: String,
-    @Json(name = "date")
-    val date: String,
-    @Json(name = "rank")
+    val score: Long,
+    val count300: Int,
+    val count100: Int,
+    val count50: Int,
+    val countMiss: Int,
+    val maxCombo: Int,
+    val countKatu: Int,
+    val countGeki: Int,
+    val isPerfect: Boolean,
+    val enabledMods: List<Mod>,
+    val date: LocalDateTime,
     val rank: String,
-    @Json(name = "pp")
-    val pp: String,
-    @Json(name = "replay_available")
-    val replayAvailable: String
+    val pp: Float,
+    val replayAvailable: Boolean
 ) {
     companion object {
+        val scoreConverter: ScoreConverter = ScoreConverter()
+
         fun get(
             userId: String,
             beatmapId: String,
@@ -52,19 +39,21 @@ data class Scores(
             mods: String = "",
             limit: Int = 50
         ): List<Scores> =
-            Klaxon().parseArray(
-                Client
-                    .instance()
-                    .get(
-                        Endpoints.Scores, mutableMapOf(
-                            "u" to userId,
-                            "b" to beatmapId,
-                            "m" to gameMode.value.toString(),
-                            "type" to if (isUsername) "string" else "id",
-                            "limit" to limit.toString(),
-                            "mods" to ModUtils.parseMods(mods).toString()
+            Klaxon()
+                .converter(scoreConverter)
+                .parseArray(
+                    Client
+                        .instance()
+                        .get(
+                            Endpoint.Scores, mutableMapOf(
+                                "u" to userId,
+                                "b" to beatmapId,
+                                "m" to gameMode.value.toString(),
+                                "type" to if (isUsername) "string" else "id",
+                                "limit" to limit.toString(),
+                                "mods" to ModUtils.parseModString(mods).toString()
+                            )
                         )
-                    )
-            )!!
+                )!!
     }
 }
