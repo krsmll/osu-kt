@@ -1,7 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.31"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.5.31"
     application
 }
 
@@ -14,20 +15,19 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
     implementation("commons-io:commons-io:20030203.000550")
     implementation("org.apache.commons:commons-lang3:3.12.0")
 
-    // Klaxon
-    implementation("com.beust:klaxon:5.5")
+    // Kotlinx Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     // Jsoup
     implementation("org.jsoup:jsoup:1.14.3")
 
-    // Fuel
-    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
-    implementation("com.github.kittinunf.fuel:fuel-json:2.3.1")
-    implementation("com.github.kittinunf.result:result:5.2.0")
+    // Ktor
+    implementation("io.ktor:ktor-client-core:1.6.7")
+    implementation("io.ktor:ktor-client-cio:1.6.7")
 }
 
 tasks.withType<KotlinCompile>() {

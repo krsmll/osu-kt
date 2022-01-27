@@ -1,11 +1,12 @@
 package osukt.enums
 
 enum class Endpoint(val value: String) {
-    Base("https://osu.ppy.sh/api/"),
-    User("get_user"),
-    UserBest("get_user_best"),
-    UserRecent("get_user_recent"),
-    Beatmaps("get_beatmaps"),
+    OAuth("https://osu.ppy.sh/oauth/token"),
+    Base("https://osu.ppy.sh/api/v2"),
+    Images("https://s.ppy.sh/"),
+    User("/users/%s"),
+    UserScore("/users/%s/scores/%s"), // 1 = User, 2 = Score Type
+    Beatmaps("/beatmaps/%s"),
     Scores("get_scores"),
     Match("get_match"),
     Replay("get_replay")

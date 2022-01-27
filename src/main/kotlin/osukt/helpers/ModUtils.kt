@@ -5,7 +5,7 @@ import osukt.enums.Mod
 /**
  * Based on Vinxis' maquiaBot.
  *
- * Source: https://github.com/VINXIS/maquiaBot/blob/master/osu-api/mods.go
+ * @see <a href="https://github.com/VINXIS/maquiaBot/blob/master/osu-api/mods.go">maquiaBot</a>
  */
 object ModUtils {
 

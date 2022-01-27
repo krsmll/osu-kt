@@ -1,9 +1,11 @@
 package osukt
 
-import osukt.domain.Scores
-import osukt.domain.User
-import osukt.domain.converters.UserConverter
-import osukt.helpers.ModUtils
+import osukt.client.Client
+import osukt.domain.beatmap.Beatmap
+import osukt.domain.user.Score
+import osukt.domain.user.User
+import osukt.enums.ScoreType
+import osukt.enums.UserLookupType
 import java.io.FileInputStream
 import java.util.*
 
@@ -16,18 +18,12 @@ object Main {
         fis.close()
 
         Client(
-            prop.getProperty(
-                "OSU_KEY"
-            )
+            prop.getProperty("CLIENT_ID").toInt(),
+            prop.getProperty("CLIENT_SECRET")
         ) // Instance can be accessed using Client.instance()
 
-        val user = User.get("Slay", isUsername = true)
-        val scores = Scores.get("Slay", "2803688", isUsername = true)
-
-        println(user)
-        println(scores)
-
-        println(ModUtils.toModList(9))
-        println(ModUtils.parseModString("HDNF"))
+        println(User.get("Slay", type = UserLookupType.Username))
+        println(Beatmap.get(3400798))
+        println(Score.get(7093124, type = ScoreType.Recent))
     }
 }
