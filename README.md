@@ -6,17 +6,18 @@ This is an osu! API wrapper written in Kotlin. The main goal is to create a usab
 
 ## Usage
 
-All you have to do before using this wrapper is initiate Client with your osu! API key like so:
+All you have to do before using this wrapper is initiate Client with your osu! client secret and client ID like so:
 
 ```kotlin
-Client(API_KEY_HERE) 
+Client(CLIENT_ID, CLIENT_SECRET)
 // You do not need to store this in a variable. Client is written in singleton pattern.
 ```
 
 After initializing the Client, you can proceed with using the wrapper.
 
 ```kotlin
-User.get()
-Scores.get()
+User.get(...)
+Score.get(...)
+Beatmap.get(...)
 // etc
 ```
