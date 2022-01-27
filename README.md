@@ -16,8 +16,8 @@ Client(CLIENT_ID, CLIENT_SECRET)
 After initializing the Client, you can proceed with using the wrapper.
 
 ```kotlin
-User.get(...)
-Score.get(...)
-Beatmap.get(...)
+User.get()
+Score.get()
+Beatmap.get()
 // etc
 ```
