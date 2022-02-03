@@ -9,7 +9,6 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import osukt.enums.RankStatus
 
-@Serializer(forClass = RankStatus::class)
 object RankStatusSerializer : KSerializer<RankStatus> {
     override val descriptor: SerialDescriptor
         get() = PrimitiveSerialDescriptor("RankStatus", PrimitiveKind.INT)

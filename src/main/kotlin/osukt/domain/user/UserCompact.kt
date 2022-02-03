@@ -16,7 +16,7 @@ data class UserCompact(
     @SerialName("profile_colour")
     val profileColor: String?,
     @SerialName("last_visit")
-    val lastVisit: String,
+    val lastVisit: String?,
     @SerialName("is_active")
     val isActive: Boolean?,
     @SerialName("is_bot")

@@ -59,12 +59,13 @@ data class Score(
             type: ScoreType = ScoreType.Recent,
             mode: GameMode? = null,
             limit: Int? = null,
-            offset: String? = null
+            offset: String? = null,
+            includeFails: Boolean? = null
         ): List<Score>? {
             val url = Endpoint.Base.value + Endpoint.UserScore.value.format(user, type.value)
             val queryParams = mutableMapOf<String, Any>()
-            queryParams.put("include_fails", "1")
 
+            if (includeFails != null && includeFails) queryParams.put("include_fails", "1")
             if (mode != null) queryParams.put("mode", mode.lookupName)
             if (limit != null) queryParams.put("limit", limit)
             if (offset != null) queryParams.put("offset", offset)

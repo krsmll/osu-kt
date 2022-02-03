@@ -28,6 +28,14 @@ dependencies {
     // Ktor
     implementation("io.ktor:ktor-client-core:1.6.7")
     implementation("io.ktor:ktor-client-cio:1.6.7")
+
+    // Test
+    testImplementation(kotlin("test"))
+}
+
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile>() {

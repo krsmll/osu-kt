@@ -8,9 +8,9 @@ data class UserStatistics(
     @SerialName("level")
     val level: Level,
     @SerialName("global_rank")
-    val rankGlobal: Int,
+    val rankGlobal: Int?,
     @SerialName("country_rank")
-    val rankCountry: Int,
+    val rankCountry: Int?,
     @SerialName("pp")
     val pp: Float,
     @SerialName("ranked_score")

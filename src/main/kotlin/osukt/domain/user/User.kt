@@ -26,7 +26,7 @@ data class User(
     @SerialName("profile_colour")
     val profileColor: String?,
     @SerialName("last_visit")
-    val lastVisit: String,
+    val lastVisit: String?,
     @SerialName("interests")
     val interests: String?,
     @SerialName("join_date")
@@ -34,7 +34,7 @@ data class User(
     @SerialName("playmode")
     val playMode: GameMode,
     @SerialName("playstyle")
-    val playStyle: List<String>,
+    val playStyle: List<String>?,
     @SerialName("discord")
     val discord: String?,
     @SerialName("twitter")
