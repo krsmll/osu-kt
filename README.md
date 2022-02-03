@@ -16,8 +16,8 @@ Client(CLIENT_ID, CLIENT_SECRET)
 After initializing the Client, you can proceed with using the wrapper.
 
 ```kotlin
-User.get()
-Score.get()
-Beatmap.get()
+User.get("Slay", type = UserLookupType.Username)
+Score.get(7093124, type = ScoreType.Recent, includeFails = true)
+Beatmap.get(169474)
 // etc
 ```
